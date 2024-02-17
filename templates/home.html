@@ -1,43 +1,81 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Price Prediction</title>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico|Arimo|Hind:300|Open+Sans+Condensed:300" rel="stylesheet">
   
+  <style>
+    body {
+      font-family: 'Arimo', sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      color: #333;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .prediction-text {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
 </head>
-
 <body>
- <div class="login">
-	<h1> House Price Prediction</h1>
-
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-      <input type="text" name="MedInc" placeholder="median income in block group" required="required" /><br>
-    	<input type="text" name="HouseAge" placeholder="median house age in block group" required="required" /><br>
-        <input type="text" name="AveRooms " placeholder="average number of rooms per household" required="required" /><br>
-        <input type="text" name="AveBedrms" placeholder="average number of bedrooms per household" required="required" /><br>
-        <input type="text" name="Population" placeholder="block group population" required="required" /><br>
-        <input type="text" name="AveOccup" placeholder="average number of household members" required="required" /><br>
-        <input type="text" name="Latitude" placeholder="block group latitude" required="required" /><br>
-        <input type="text" name="longitude" placeholder="block group longitude" required="required" /><br>
-
-       
-
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+  <div class="container">
+    <h1>House Price Prediction</h1>
+    <form action="{{ url_for('predict')}}" method="post">
+      <input type="text" name="MedInc" placeholder="Median income in block group" required><br>
+      <input type="text" name="HouseAge" placeholder="Median house age in block group" required><br>
+      <input type="text" name="AveRooms" placeholder="Average number of rooms per household" required><br>
+      <input type="text" name="AveBedrms" placeholder="Average number of bedrooms per household" required><br>
+      <input type="text" name="Population" placeholder="Block group population" required><br>
+      <input type="text" name="AveOccup" placeholder="Average number of household members" required><br>
+      <input type="text" name="Latitude" placeholder="Block group latitude" required><br>
+      <input type="text" name="longitude" placeholder="Block group longitude" required><br>
+      <button type="submit">Predict</button>
     </form>
-
-   <br>
-   <br>
-  
-   
- </div>
- {{prediction_text}}
-
+    <div class="prediction-text">{{prediction_text}}</div>
+  </div>
 </body>
 </html>
