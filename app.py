@@ -32,6 +32,5 @@ def predict():
     output=rgmodel.predict(final_input)[0]
     return render_template("home.html",prediction_text="The House price prediction is {}".format(output))
 
-
 if __name__=="__main__":
     app.run(debug=True)
